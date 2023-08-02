@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [value,setValue] = useState(null)
+  const [value,setValue] = useState("")
   const [message,setMessage] = useState(null);
   const [previousChats,setPreviousChats] = useState([])
   const [currentTitle,setCurrentTitle] = useState(null);
 
-
+  useEffect(()=>{
+    console.log(value)
+  },[value])
   const createNewChat = ()=>{
     setMessage(null)
     setValue("")
@@ -33,6 +35,7 @@ function App() {
     try{
       const response = await fetch("http://localhost:8000/completaions",options)
       const data = await response.json()
+      console.log("데이터 확인",data)
       setMessage(data.choices[0].message)
     }catch(error){
       console.error(error)
@@ -59,12 +62,12 @@ function App() {
     }
   },[message,currentTitle])
 
-  const onKeyPress = (e) => {
-    console.log(e)
-    if(e.key == 'Enter') {
-      getMessage();
-    }
-  }
+  // const onKeyPress = (e) => {
+  //   console.log("여기"+e)
+  //   if(e.key == 'Enter') {
+  //     getMessage();
+  //   }
+  // }
 
 
   const currentChat = previousChats.filter(previousChat => previousChat.title === currentTitle)
@@ -93,9 +96,10 @@ function App() {
         </ul>
         <div className='bottom-section'>
           <div className='input-container' >
-            <input value={value}  onChange={(e)=>{setValue(e.target.value)}} onKeyPress={(e)=>{onKeyPress(e)}}/>
-            <div id='submit'className={value === null || ""?"opacity1":"opacity0"} onClick={getMessage} >전송</div>
-
+            {/* <input value={value}  onChange={(e)=>{setValue(e.target.value)}} onKeyPress={(e)=>{onKeyPress(e)}}/> */}
+            <input value={value}  onChange={(e)=>{setValue(e.target.value)}} />
+            {/* <div id='submit'className={value === null || ""?"opacity1":"opacity0"} onClick={getMessage} >전송</div> */}
+            <div id='submit' onClick={getMessage} >전송</div>
           </div>
           <p className='info'>
             Chat GPT Mar 14 Version Free Research Preview

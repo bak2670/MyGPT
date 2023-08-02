@@ -9,6 +9,8 @@ app.use(express.json())
 app.use(cors())
 // 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
 
+// mygpt 새로 키 발급
+// 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
 const API_KEY = process.env.API_KEY
 
 app.post('/completaions',async(req,res)=>{
