@@ -95,6 +95,7 @@ function App() {
           <div className='input-container' >
             <input value={value}  onChange={(e)=>{setValue(e.target.value)}} onKeyPress={(e)=>{onKeyPress(e)}}/>
             <div id='submit'className={value === null || ""?"opacity1":"opacity0"} onClick={getMessage} >전송</div>
+
           </div>
           <p className='info'>
             Chat GPT Mar 14 Version Free Research Preview
