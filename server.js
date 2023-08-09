@@ -31,7 +31,7 @@ app.post('/completaions',async(req,res)=>{
         const data = await response.json()
         res.send(data)
     }catch(error){
-        console.error("에러@@@@"+error)
+        console.error(error)
     }
 })
 

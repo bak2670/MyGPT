@@ -8,6 +8,7 @@
 body{
   margin: 0;
   padding: 0;
+
 }
 .App{
   background-color: #343541;
@@ -115,16 +116,23 @@ input:focus{
 }
 
 .feed {
-  overflow: hidden;
+  overflow-y: scroll;
   width: 100%;
   cursor: pointer;
   padding: 0;
+  -ms-overflow-style:none; /* IE and Edge */
+  scrollbar-width:none /* Firefox */
+}
+
+
+.feed::-webkit-scrollbar {
+	display:none /* Chrome , Safari , Opera */
 }
 
 .feed li {
   display: flex;
   background-color: #444654;
-  width: 100%;
+  width: 95%;
   padding: 20px;
   margin: 20px 0;
 }
@@ -137,3 +145,7 @@ input:focus{
 .feed p.role{
   min-width: 100px;
 }
+.feed p.comchat{
+  padding-right: 20px;
+}
+

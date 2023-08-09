@@ -8,7 +8,7 @@ function App() {
   const [currentTitle,setCurrentTitle] = useState(null);
 
   useEffect(()=>{
-    console.log(value)
+    // console.log(value)
   },[value])
   const createNewChat = ()=>{
     setMessage(null)
@@ -35,15 +35,16 @@ function App() {
     try{
       const response = await fetch("http://localhost:8000/completaions",options)
       const data = await response.json()
-      console.log("데이터 확인",data)
+      console.log("data.choices[0].message",data.choices[0].message)
       setMessage(data.choices[0].message)
+      // setValue("")
     }catch(error){
       console.error(error)
     }
   }
 
   useEffect(()=>{
-    console.log(currentTitle,value,message)
+    // console.log(currentTitle,value,message)
     if(!currentTitle && value && message){
       setCurrentTitle(value)
     }
@@ -60,6 +61,7 @@ function App() {
         }]
       ))
     }
+
   },[message,currentTitle])
 
   // const onKeyPress = (e) => {
